@@ -26,4 +26,9 @@ public class Library {
         }
         return true;
     }
+
+    public Book lendBook() {
+        return this.books.remove(0);
+    }
+
 }

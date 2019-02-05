@@ -52,4 +52,12 @@ public class LibraryTest {
         assertEquals(5, library.bookCount());
     }
 
+    @Test
+    public void canRemoveBooksFromStock() {
+        library.addBook(book);
+        library.addBook(book);
+        library.lendBook();
+        assertEquals(1, library.bookCount());
+    }
+
 }
