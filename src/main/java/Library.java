@@ -31,4 +31,13 @@ public class Library {
         return this.books.remove(0);
     }
 
+    public int booksByGenre(String genre) {
+        int result = 0;
+        for ( Book book : this.books) {
+            if (book.getGenre() == genre ) {
+                result += 1;
+            }
+        }
+        return result;
+    }
 }

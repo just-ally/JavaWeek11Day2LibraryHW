@@ -7,11 +7,15 @@ public class LibraryTest {
 
     Library library;
     Book book;
+    Book book2;
+    Book book3;
 
     @Before
     public void before(){
         library = new Library(5);
         book = new Book("Cloud Atlas", "David Mitchell", "Fantasy");
+        book2 = new Book("Lord of the Rings", "JRR Tolkien", "Fantasy");
+        book3 = new Book("The Shining", "Stephen King", "Horror");
     }
 
     @Test
@@ -58,6 +62,14 @@ public class LibraryTest {
         library.addBook(book);
         library.lendBook();
         assertEquals(1, library.bookCount());
+    }
+
+    @Test
+    public void canCountBooksByGenre() {
+        library.addBook(book);
+        library.addBook(book2);
+        library.addBook(book3);
+        assertEquals(2, library.booksByGenre("Fantasy"));
     }
 
 }
