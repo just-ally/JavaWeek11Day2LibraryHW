@@ -10,7 +10,7 @@ public class LibraryTest {
 
     @Before
     public void before(){
-        library = new Library();
+        library = new Library(5);
         book = new Book("Cloud Atlas", "David Mitchell", "Fantasy");
     }
 
@@ -23,6 +23,33 @@ public class LibraryTest {
     public void canAddBookToLibraryStock() {
         library.addBook(book);
         assertEquals(1, library.bookCount());
+    }
+
+    @Test
+    public void canCheckWhenStockIsNotFull() {
+        assertEquals(false, library.checkIfStockFull());
+    }
+
+    @Test
+    public void canCheckWhenStockIsFull() {
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        assertEquals(true, library.checkIfStockFull());
+    }
+
+    @Test
+    public void cannotAddBookIfStockFull() {
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        assertEquals(5, library.bookCount());
     }
 
 }
